@@ -2,7 +2,13 @@
 const nextConfig = {
   devIndicators: false,
   images: {
-    domains: ['shopping-phinf.pstatic.net', 'bookthumb-phinf.pstatic.net'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'shopping-phinf.pstatic.net',
+        pathname: '/**',
+      },
+    ],
   },
 };
 

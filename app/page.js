@@ -43,6 +43,7 @@ function Modal({ book, onClose }) {
 
         <p><strong>저자 : </strong> {book.author ? book.author.replace(/\^/g, ', ') : '정보 없음'}</p>
         <p><strong>출판사 : </strong> {book.publisher}</p>
+        <p><strong>ISBN : </strong> {book.isbn}</p>
         <p><strong>가격 : </strong> 
           {book.discount && !isNaN(book.discount) && book.discount != 0
             ? `${Number(book.discount).toLocaleString()}원`
