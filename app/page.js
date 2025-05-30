@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from "react";
+import { useCallback, useState, useEffect } from "react";
 import Image from 'next/image';
 import './globals.css';
 
@@ -63,11 +63,15 @@ export default function Home() {
   const [selectedBook, setSelectedBook] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [sort, setSort] = useState("sim"); 
 
-  const handleSearch = async () => {
+  const handleSearch = useCallback(async () => {
     if (!query.trim()) {
-      setError("검색어를 입력해주세요")
-      return;
+      if (!query.trim()) {
+        setError("검색어를 입력해주세요");
+        setBooks([]);
+        return;
+      }
     }
 
     setLoading(true);
@@ -75,14 +79,13 @@ export default function Home() {
     setBooks([]);
 
     try {
-      const res = await fetch(`/api/search?query=${encodeURIComponent(query)}`);
+      const res = await fetch(`/api/search?query=${encodeURIComponent(query)}&sort=${sort}`);
       const data = await res.json();
-      
-      console.log(data, data.items);
+
       if (data.items && data.items.length > 0) {
         setBooks(data.items);
       } else {
-        setError("책을 찾을 수 없습니다.");
+        return;
       }
     } catch (error) {
       setError("검색 중 오류가 발생했습니다.");
@@ -90,23 +93,42 @@ export default function Home() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [query, sort]);
+
+  useEffect(() => {
+    if (!query.trim()) {
+      setBooks([]);
+      return;  
+    }
+
+    handleSearch();
+  }, [sort, handleSearch, query]);
 
   return (
     <div className="container">
       <input
         placeholder="검색할 책의 제목"
         type="text"
-        name="text"
         className="input"
         autoComplete="off"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter') {
+            handleSearch();
+          }
+        }}
       />
+      <select value={sort} onChange={(e) => setSort(e.target.value)} className="select">
+          <option value="sim">정확도순</option>
+          <option value="date">출간일순</option>
+      </select>
       <button onClick={handleSearch}>검색</button>
 
       {loading && <p>검색 중...</p>}
       {error && <p className="error">{error}</p>}
+
+      {!query.trim() && books.length === 0 && !loading && !error && (<p className="info">검색어를 입력하세요</p>)}
 
       <div className="book-list">
         {books.map((book, idx) => (

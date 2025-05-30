@@ -1,5 +1,5 @@
 export default async function handler(req, res) {
-  const {query} = req.query;
+  const {query, sort = "sim"} = req.query;
 
   if (!query) {
     return res.status(400).json({error: '검색어가 필요합니다'});
@@ -8,7 +8,7 @@ export default async function handler(req, res) {
   const clientId = process.env.CLIENT_ID;
   const clientSecret = process.env.CLIENT_SECRET;
 
-  const apiUrl = `https://openapi.naver.com/v1/search/book.json?query=${encodeURIComponent(query)}&start=1&display=100&sort=sim`;
+  const apiUrl = `https://openapi.naver.com/v1/search/book.json?query=${encodeURIComponent(query)}&start=1&display=100&sort=${sort}`;
 
   try {
     const response = await fetch(apiUrl, {
