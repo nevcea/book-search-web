@@ -7,6 +7,13 @@ import './globals.css';
 function Modal({ book, onClose }) {
   const [closing, setClosing] = useState(false);
 
+  useEffect(() => {
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, []);
+
   const handleClose = () => {
     setClosing(true);
   };
