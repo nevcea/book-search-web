@@ -14,6 +14,9 @@ const geistMono = Geist_Mono({
 export const metadata = {
   title: "Written Beru",
   description: "",
+  icons: {
+    icon: '/logo.png',
+  },
 };
 
 export default function RootLayout({ children }) {

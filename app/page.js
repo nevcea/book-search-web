@@ -106,6 +106,15 @@ export default function Home() {
 
   return (
     <div className="container">
+      <div className="logo">
+        <Image
+          src="/logo.png"
+          alt="사이트 로고"
+          width={160}
+          height={60}
+        />
+      </div>
+
       <input
         placeholder="검색할 책의 제목"
         type="text"
