@@ -89,7 +89,6 @@ export default function Home() {
       }
     } catch (error) {
       setError("검색 중 오류가 발생했습니다.");
-      console.error(error);
     } finally {
       setLoading(false);
     }
@@ -129,8 +128,8 @@ export default function Home() {
         }}
       />
       <select value={sort} onChange={(e) => setSort(e.target.value)} className="select">
-          <option value="sim">정확도순</option>
-          <option value="date">출간일순</option>
+        <option value="sim">정확도순</option>
+        <option value="date">출간일순</option>
       </select>
       <button onClick={handleSearch}>검색</button>
 
