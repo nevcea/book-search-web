@@ -1,0 +1,58 @@
+.homeButton {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  transition: background-color 0.3s;
+}
+
+.homeButton svg {
+  margin-right: 10px;
+  width: 20px;
+  height: 20px;
+  fill: white;
+}
+
+.homeButton:hover {
+  background-color: #0056b3;
+}
+
+.select {
+  width: 100%;
+  max-width: 180px;
+  height: 40px;
+  padding: 8px 12px;
+  font-size: 16px;
+  border-radius: 12px;
+  border: 1.5px solid lightgray;
+  outline: none;
+  background-color: white;
+  box-shadow: 0px 0px 20px -18px;
+  transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+  margin-bottom: 10px;
+  appearance: none;
+  background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" width="14" height="10" viewBox="0 0 24 24"><path fill="gray" d="M7 10l5 5 5-5z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 14px;
+}
+
+.select:hover {
+  border: 2px solid lightgray;
+  box-shadow: 0px 0px 20px -17px;
+}
+
+.select:active {
+  transform: scale(0.95);
+}
+
+.select:focus {
+  border: 2px solid grey;
+}

@@ -1,0 +1,28 @@
+.bookList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 20px;
+  animation: fadeIn 0.3s ease;
+}
+
+.bookCard {
+  cursor: pointer;
+  width: 120px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.bookCard:hover {
+  transform: scale(1.05);
+}
+
+.bookCard p {
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
