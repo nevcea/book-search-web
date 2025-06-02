@@ -13,8 +13,3 @@
   opacity: 1;
   transition: opacity 1s ease-out, transform 1s ease-out;
 }
-
-.error.fadeOut {
-  opacity: 0;
-  transform: translateY(-10px);
-}
