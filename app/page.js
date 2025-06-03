@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import './globals.css';
 import SearchBar from './components/SearchBar';
 import Logo from './components/Logo';
+import Navbar from './components/NavigationBar';
 
 export default function Home() {
   const [query, setQuery] = useState('');
@@ -45,11 +46,15 @@ export default function Home() {
 
   return (
     <div className="container">
-      <Logo />
-      <SearchBar query={query} setQuery={setQuery} handleSearch={handleSearch} />
+      <Logo/>
+      <Navbar/>
 
-      {loading && <p>검색 중...</p>}
-      {error && <p className="error">{error}</p>}
+      <div className="content">
+        <SearchBar query={query} setQuery={setQuery} handleSearch={handleSearch} />
+
+        {loading && <p>검색 중...</p>}
+        {error && <p className="error">{error}</p>}
+      </div>
     </div>
   );
 }

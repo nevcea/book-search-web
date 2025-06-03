@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from '../modules/SearchBar.module.css';
 
-function SearchBar({ query, setQuery, handleSearch, sort, setSort }) {
+function SearchBar({ query, setQuery, handleSearch }) {
   return (
     <div className={styles.searchBarContainer}>
       <input
@@ -17,7 +17,6 @@ function SearchBar({ query, setQuery, handleSearch, sort, setSort }) {
           }
         }}
       />
-      <button onClick={handleSearch} className={styles.button}>검색</button>
     </div>
   );
 }
