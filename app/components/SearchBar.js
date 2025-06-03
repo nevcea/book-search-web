@@ -2,6 +2,10 @@ import React from 'react';
 import styles from '../modules/SearchBar.module.css';
 
 function SearchBar({ query, setQuery, handleSearch }) {
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') handleSearch();
+  };
+
   return (
     <div className={styles.searchBarContainer}>
       <input
@@ -11,11 +15,7 @@ function SearchBar({ query, setQuery, handleSearch }) {
         autoComplete="off"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
-        onKeyDown={(e) => {
-          if (e.key === 'Enter') {
-            handleSearch();
-          }
-        }}
+        onKeyDown={handleKeyDown}
       />
     </div>
   );

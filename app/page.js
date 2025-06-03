@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useState } from 'react';
+import { useCallback, useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import './globals.css';
 import SearchBar from './components/SearchBar';
@@ -31,23 +31,24 @@ export default function Home() {
       } else {
         router.push(`/search-results?query=${encodeURIComponent(query)}&sort=sim&noResults=true`);
       }
-    } catch (error) {
+    } catch {
       router.push(`/search-results?query=${encodeURIComponent(query)}&sort=sim&error=true`);
     } finally {
       setLoading(false);
     }
   }, [query, router]);
 
-  if (error) {
-    setTimeout(() => {
-      setError('');
-    }, 1000);
-  }
+  useEffect(() => {
+    if (error) {
+      const timeout = setTimeout(() => setError(''), 1000);
+      return () => clearTimeout(timeout);
+    }
+  }, [error]);
 
   return (
     <div className="container">
-      <Logo/>
-      <Navbar/>
+      <Logo />
+      <Navbar />
 
       <div className="content">
         <SearchBar query={query} setQuery={setQuery} handleSearch={handleSearch} />
