@@ -1,6 +1,6 @@
 'use client';
 
-import BookRecommend from './BookRecommend';
+import BookRecommend from '../components/BookRecommend';
 
 const booksToSearch = [
   "나의 투쟁 아돌프 히틀러",
