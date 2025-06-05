@@ -1,6 +1,6 @@
 'use client';
 
-import BookRecommend from './BookRecommend';
+import BookRecommend from '../components/BookRecommend';
 
 const booksToSearch = [
   '신곡 : 천국편 (단테 알리기에리의 코메디아)',

@@ -1,6 +1,6 @@
 'use client';
 
-import BookRecommend from './BookRecommend';
+import BookRecommend from '../components/BookRecommend';
 
 const booksToSearch = [
   '노인과 바다 어니스트 헤밍웨이',

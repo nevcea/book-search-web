@@ -96,7 +96,7 @@ const BookRecommend = ({ booksToSearch, cacheKey, title }) => {
           <h3>
             <span className={styles.rank}>#{idx + 1}</span> {book.title}
           </h3>
-          <p>{book.author}</p>
+          <p>{book.author ? book.author.replace(/\^/g, ', ') : '정보 없음'}</p>
         </div>
       </div>
     ));
